@@ -1,5 +1,5 @@
 reg add "HKEY_CLASSES_ROOT\*\shell\Open with VS Code" /ve /d "Open with VS Code" /f
-reg add "HKEY_CLASSES_ROOT\*\shell\Open with VS Code\command" /ve /d "\"C:\Users\%USERNAME%\AppData\Local\Programs\Microsoft VS Code\Code.exe\" \"%1\"" /f
+reg add "HKEY_CLASSES_ROOT\*\shell\Open with VS Code\command" /ve /d "\"C:\Users\Isaac\AppData\Local\Programs\Microsoft VS Code\Code.exe\" \"%1\"" /f
 
 
 
@@ -7,3 +7,32 @@ reg add "HKEY_CLASSES_ROOT\*\shell\Open with VS Code\command" /ve /d "\"C:\Users
 /to delete/ v
 
 reg delete "HKEY_CLASSES_ROOT\*\shell\Open with VS Code" /f
+
+
+To make the right-click menu show the "Show more options" option by default in Windows 11, you can change a setting that reverts the right-click menu to the classic style. Here's how to do it:
+
+Method 1: Modify Registry (To Show Classic Right-Click Menu by Default)
+Press Win + R, type regedit, and press Enter to open Registry Editor.
+Navigate to the following key:
+objectivec
+Copy
+Edit
+HKEY_CURRENT_USER\Software\Classes\CLSID
+Right-click on the CLSID folder > New > Key.
+Name the new key as:
+Copy
+Edit
+{86ca1aa0-34aa-4e8b-a509-50c905bae2a2}
+Right-click on the new key you just created > New > Key again.
+Name this new key as:
+Copy
+Edit
+InprocServer32
+Double-click on the (Default) value in the InprocServer32 folder and set its Value Data to an empty string (leave it blank).
+Close Registry Editor and restart your PC.
+Method 2: Revert Back (Undo Changes)
+If you ever want to revert this change and go back to the default right-click behavior (where you have the "Show more options" option):
+
+Navigate back to the same key in the Registry (HKEY_CURRENT_USER\Software\Classes\CLSID).
+Right-click the key {86ca1aa0-34aa-4e8b-a509-50c905bae2a2} and Delete it.
+Restart your PC.
